@@ -1,0 +1,44 @@
+<%- include("partials/header") %>
+<div class="container mt-5">
+	<div class="card  offset-4 col-4">
+		<div class="card-body">
+			<div class="card-title">
+				<h2><%=student.Name%></h2>
+			</div>
+			<hr>
+			<div class="card-body">
+				<div>
+					<div class="row form-group">
+						<div class="col-12 col-sm-6">
+							<h5>AGE:</h5>
+						</div>
+						<div class="col-12 col-sm">
+							<h5><%=student.Age%> Years</h5>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-12 col-sm-6">
+							<h5>STD:</h5>
+						</div>
+						<div class="col-12 col-sm">
+							 <h5><%=student.Std%></h5>
+						</div>
+					</div>
+					
+				</div>
+				<div>
+					<a class="btn btn-sm btn-info btn-block" href="/students/<%=student.id %>/edit">EDIT</a>
+				</div>	
+				<div class="mt-2">
+					<form  action="/students/<%=student._id%>?_method=DELETE" method="POST">
+						<button class="btn btn-sm btn-danger btn-block form-group">
+							Delete
+						</button>
+					</form>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include("partials/footer") %>

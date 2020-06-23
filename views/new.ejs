@@ -1,0 +1,42 @@
+<%- include("partials/header") %>
+<div class="container mt-5">
+		<form class="form p-3" action ="/students" method="POST">
+			<h1 class=" mb-4">
+					NEW STUDENT
+			</h1>
+			<hr>
+			<div>
+				<div class="row form-group mb-1">
+					<div class="col-12 col-sm-2">
+						<label class="form-group" for="student[Name]">Name: </label>
+					</div>
+					<div class="col-12 col-sm">
+						<input class="form-control" type="text" name="student[Name]" placeholder="Enter name">
+					</div>
+				</div>
+				<div class="row form-group mb-1">
+					<div class="col-12 col-sm-2">
+						<label class="form-group" for="student[Age]">Age: </label>
+					</div>
+					<div class="col-12 col-sm">
+						<input class="form-control" type="number" name="student[Age]" placeholder="Enter age">
+					</div>
+				</div>
+				<div class="row form-group mb-1">
+					<div class="col-12 col-sm-2">
+						<label class="form-group" for="student[Std]">Std: </label>
+					</div>
+					<div class="col-12 col-sm">
+						<input class="form-control" type="number" name="student[Std]" placeholder="Enter std">
+					</div>
+				</div>
+			<div class="row form-group mb-1">
+				<div class="col-12 offset-2">
+					<input class="form-group btn btn-sm btn-info" type="submit">
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+<%- include("partials/footer") %>

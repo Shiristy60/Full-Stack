@@ -1,0 +1,45 @@
+<%- include("partials/header") %>
+<div class="container mt-5">
+	<div>
+		<form class="form p-3" action ="/students/<%= student._id %>?_method=PUT" method="POST">
+			<div class="row mb-1">
+				<div class="col-12 mb-3">
+					<h2>Edit <%= student.Name%></h2>
+					<hr>
+				</div>
+			</div>
+			<div class="row mb-1">
+				<div class="col-12 col-md-2">
+					<label class="form-group" for="student[Name]">Name: </label>
+				</div>
+				<div class="col-12 col-md-10">
+					<input class="form-control" type="text" name="student[Name]" value="<%=student.Name%>">
+				</div>
+			</div>
+			<div class="row mb-1">
+				<div class="col-12 col-md-2">
+					<label class="form-group" for="student[Age]">Age:</label>
+				</div>
+				<div class="col-12 col-md-10">
+					<input class="form-control" type="number" name="student[Age]" value="<%=student.Age%>">
+				</div>	
+			</div>
+			<div class="row mb-1">
+				<div class="col-12 col-md-2">
+					<label class="form-group" for="student[Std]">Std:</label>
+				</div>
+				<div class="col-12 col-md-10">
+					<input class="form-control" type="number" name="student[Std]" value="<%=student.Std%>">
+				</div>
+			</div>
+			<div class="row mb-1">
+				<div class="offset-2">
+					<input class="offset-2 btn  btn-sm btn-outline-primary" type="submit">
+				</div>	
+			</div>
+		</form>
+	</div>
+	
+</div>
+
+<%- include("partials/footer") %>
