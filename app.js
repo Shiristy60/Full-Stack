@@ -187,7 +187,6 @@ app.post("/login", passport.authenticate("local", {
 	successRedirect: "/users",
 	failureRedirect: "/login"
 	}), function(req, res){
-	req.flash("success", "Welcome");
 })
 
 //LOGOUT
