@@ -3,11 +3,12 @@
 		<title>Survey</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="/stylesheets/app.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-dark bg-dark navbar-expand-md">
-			<a class="navbar-brand ml-5" href="/">Home</a>
+			<a class="navbar-brand ml-5" href="/"><span class="fa fa-home"></span> Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
    				 <span class="navbar-toggler-icon"></span>
   			</button>
@@ -19,7 +20,37 @@
 						</a>
 					</li>
 				</ul>
+				<ul class="navbar-nav ml-auto">
+					<% if(!currentUser){ %>
+						<li class="nav-item">
+							<a class="nav-link" href="/login"><span class="fa fa-sign-in"></span> Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/register">Register</a>
+						</li>
+					<% }else{ %>
+						<li><a class="nav-link">Signed In As <%=currentUser.username %></a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="/logout">Logout</a>
+						</li>
+					<% } %>
+					
+					
+				</ul>
 			</div>
 		</nav>
+		<div class="container mt-2">
+			<% if(error && error.length>0) { %>
+				<div class="alert alert-danger" role="alert">
+					<%= error %>
+				</div>
+			<% }if(success && success.length>0){ %>
+				<div class="alert alert-success" role="alert">
+					<%= success %>
+				</div>
+			<% } %>
+			
+			
+		</div>
 		
 	

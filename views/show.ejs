@@ -3,9 +3,6 @@
 	<div class="card  offset-4 col-4">
 		<div class="card-title mt-3 mb-0">
 			<h2 class="text-center"><%=user.FirstName%> <%=user.LastName%></h2>
-			<p class="time float-right">
-				Created: <%= moment(user.createdAt).fromNow() %>
-			</p>
 		</div>
 		<hr>
 		<div class="card-body">
@@ -15,16 +12,31 @@
 					<p><%=user.Comment%></p>
 				</div>
 			</div>
-			<div>
-				<a class="btn btn-sm btn-info btn-block" href="/users/<%=user.id %>/edit">EDIT</a>
-			</div>	
-			<div class="mt-2">
-				<form  action="/users/<%=user._id%>?_method=DELETE" method="POST">
-					<button class="btn btn-sm btn-danger btn-block form-group">
-						Delete
-					</button>
-				</form>	
+			<div class="row">
+				<div class="col-12">
+					<p class="time float-right">
+						Created: <%= moment(user.createdAt).fromNow() %>
+					</p>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-12 float-right">
+					<p class="float-right"><em>By <%=user.author.username%></em></p>
+				</div>
+			</div>
+			<% if(currentUser && ((user.author.id).equals(currentUser._id))) { %>
+				<div>
+					<a class="btn btn-sm btn-info btn-block" href="/users/<%=user.id %>/edit">EDIT</a>
+				</div>	
+				<div class="mt-2">
+					<form  action="/users/<%=user._id%>?_method=DELETE" method="POST">
+						<button class="btn btn-sm btn-danger btn-block form-group">
+							Delete
+						</button>
+					</form>	
+				</div>
+			<% } %>
+				
 		</div>
 	</div>
 </div>
