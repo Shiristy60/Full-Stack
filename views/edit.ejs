@@ -1,35 +1,35 @@
 <%- include("partials/header") %>
 <div class="container mt-5">
 	<div>
-		<form class="form p-3" action ="/students/<%= student._id %>?_method=PUT" method="POST">
+		<form class="form p-3" action ="/users/<%= user._id %>?_method=PUT" method="POST">
 			<div class="row mb-1">
 				<div class="col-12 mb-3">
-					<h2>Edit <%= student.Name%></h2>
+					<h2>Edit <%= user.Name%></h2>
 					<hr>
 				</div>
 			</div>
 			<div class="row mb-1">
 				<div class="col-12 col-md-2">
-					<label class="form-group" for="student[Name]">Name: </label>
+					<label class="form-group" for="user[FirstName]">First Name: </label>
 				</div>
 				<div class="col-12 col-md-10">
-					<input class="form-control" type="text" name="student[Name]" value="<%=student.Name%>">
+					<input class="form-control" type="text" name="user[FirstName]" value="<%=user.FirstName%>">
 				</div>
 			</div>
 			<div class="row mb-1">
 				<div class="col-12 col-md-2">
-					<label class="form-group" for="student[Age]">Age:</label>
+					<label class="form-group" for="user[LastName]">Last Name: </label>
 				</div>
 				<div class="col-12 col-md-10">
-					<input class="form-control" type="number" name="student[Age]" value="<%=student.Age%>">
+					<input class="form-control" type="text" name="user[LastName]" value="<%=user.LastName%>">
 				</div>	
 			</div>
 			<div class="row mb-1">
 				<div class="col-12 col-md-2">
-					<label class="form-group" for="student[Std]">Std:</label>
+					<label class="form-group" for="user[Comment]">Reviews: </label>
 				</div>
 				<div class="col-12 col-md-10">
-					<input class="form-control" type="number" name="student[Std]" value="<%=student.Std%>">
+					<textarea class="form-control" name="user[Comment]" value="<%=user.Comment%>"></textarea>
 				</div>
 			</div>
 			<div class="row mb-1">

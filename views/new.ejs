@@ -1,37 +1,40 @@
 <%- include("partials/header") %>
 <div class="container mt-5">
-		<form class="form p-3" action ="/students" method="POST">
+		<form class="form p-3" action ="/users" method="POST">
 			<h1 class=" mb-4">
-					NEW STUDENT
+					NEW USER
 			</h1>
 			<hr>
 			<div>
 				<div class="row form-group mb-1">
-					<div class="col-12 col-sm-2">
-						<label class="form-group" for="student[Name]">Name: </label>
+					<div class="col-12">
+						<label for="user[FirstName]">First Name: </label>
 					</div>
-					<div class="col-12 col-sm">
-						<input class="form-control" type="text" name="student[Name]" placeholder="Enter name">
+					<div class="col-12">
+						<input  class="form-control" type="text" name="user[FirstName]" placeholder="First name">
 					</div>
 				</div>
+				<br/>
 				<div class="row form-group mb-1">
-					<div class="col-12 col-sm-2">
-						<label class="form-group" for="student[Age]">Age: </label>
+					<div class="col-12">
+						<label  for="user[LastName]">Last Name: </label>
 					</div>
-					<div class="col-12 col-sm">
-						<input class="form-control" type="number" name="student[Age]" placeholder="Enter age">
+					<div class="col-12">
+						<input class="form-control" type="text" name="user[LastName]" placeholder="Last name">
 					</div>
 				</div>
+				<br/>
 				<div class="row form-group mb-1">
-					<div class="col-12 col-sm-2">
-						<label class="form-group" for="student[Std]">Std: </label>
+					<div class="col-12">
+						<label for="user[Comment]">Reviews: </label>
 					</div>
-					<div class="col-12 col-sm">
-						<input class="form-control" type="number" name="student[Std]" placeholder="Enter std">
+					<div class="col-12">
+						<textarea class="form-control" rows="10" name="user[Comment]" placeholder="Your reviews"></textarea>
 					</div>
 				</div>
+				<br/>
 			<div class="row form-group mb-1">
-				<div class="col-12 offset-2">
+				<div class="col-12">
 					<input class="form-group btn btn-sm btn-info" type="submit">
 				</div>
 			</div>

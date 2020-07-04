@@ -2,24 +2,28 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride =require("method-override");
+var moment = require("moment");
 
 app = express();
 
 //APP CONFIG
-mongoose.connect("mongodb://localhost:27017/studentdb", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/surveydb", {useNewUrlParser: true, useUnifiedTopology: true});
 app.set("view engine" , "ejs");
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 
+app.locals.moment=require('moment');
+
 //MONGOOSE/MODEL CONFIG
-var studentSchema = new mongoose.Schema({
-	Name : String,
-	Age : Number,
-	Std : Number
+var userSchema = new mongoose.Schema({
+	FirstName : String,
+	LastName: String,
+	Comment: String,
+	createdAt: { type: Date, default: Date.now }
 });
 
-var Student = mongoose.model("Student", studentSchema);
+var User= mongoose.model("User", userSchema);
 
 
 /*Student.create({
@@ -32,85 +36,85 @@ var Student = mongoose.model("Student", studentSchema);
 
 
 app.get("/", function(req, res){
-	res.redirect("/students");
+	res.redirect("/users");
 })
 
 //INDEX ROUTE
-app.get("/students", function(req,res){
-	Student.find({}, function(err, students){
+app.get("/users", function(req,res){
+	User.find({}, function(err, users){
 		if(err){
 			console.log(err)
 		}
 		else{
-			res.render("index", { students: students });
+			res.render("index", { users: users });
 		}
 	})
 })
 
 //NEW ROUTE
-app.get("/students/new", function(req,res){
+app.get("/users/new", function(req,res){
 	res.render("new");
 })
 
 //CREATE ROUTE
-app.post("/students", function(req, res){
+app.post("/users", function(req, res){
 	//create students
-	Student.create(req.body.student, function(err, newStudent){
+	User.create(req.body.user, function(err, newUser){
 		if(err){
 			res.render("new")
 		}
 		else{
-			res.redirect("students");
+			res.redirect("users");
 		}
 	})
 })	
 
 //SHOW PAGE
-app.get("/students/:id", function(req,res){
-	Student.findById(req.params.id, function(err, foundStudent){
+app.get("/users/:id", function(req,res){
+	User.findById(req.params.id, function(err, foundUser){
 		if(err){
-			res.redirect("/students");
+			res.redirect("/users");
 		}
 		else{
-			res.render("show", {student: foundStudent});
+			res.render("show", {user: foundUser});
 		}
 	})
 	
 })
 
 //EDIT ROUTE
-app.get("/students/:id/edit", function(req, res){
-	Student.findById(req.params.id, function(err, foundStudent){
+app.get("/users/:id/edit", function(req, res){
+	User.findById(req.params.id, function(err, foundUser){
 		if(err){
-			res.redirect("/students");
+			res.redirect("/users");
 		}
 		else{
-			res.render("edit", {student: foundStudent});
+			res.render("edit", {user: foundUser});
 		}
 	})
 })
 
 //UPDATE ROUTE
-app.put("/students/:id", function(req, res){
-	Student.findByIdAndUpdate(req.params.id, req.body.student, function(err, updatedStudent){
+app.put("/users/:id", function(req, res){
+	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
 		if(err){
-			res.redirect("/students");
+			res.redirect("/users");
 		}
 		else{
-			res.redirect("/students/");
+			res.redirect("/users/");
 		}
 	})
 })
 
 //DELETE ROUTE
-app.delete("/students/:id", function(req, res){
-	//destro student
-	Student.findByIdAndRemove(req.params.id, function(err){
+app.delete("/users/:id", function(req, res){
+	//destroy user
+	User.findByIdAndRemove(req.params.id, function(err){
 		if(err){
-			res.redirect("/students");
+			res.redirect("/users");
 		}
 		else{
-			res.redirect("/students");
+			res.redirect("/users");
 		}
 	})
 })
