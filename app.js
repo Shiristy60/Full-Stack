@@ -201,7 +201,7 @@ function isLoggedIn(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	}
-	req.flash("error", "Please Login First")
+	req.flash("error", "Please Register First")
 	res.redirect("/login");
 }
 
