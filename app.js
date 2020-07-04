@@ -202,7 +202,7 @@ function isLoggedIn(req, res, next){
 		return next();
 	}
 	req.flash("error", "Please Register First")
-	res.redirect("/login");
+	res.redirect("/register");
 }
 
 function checkOwnership(req, res, next){
