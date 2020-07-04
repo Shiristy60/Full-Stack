@@ -229,7 +229,7 @@ function checkOwnership(req, res, next){
 		res.redirect("back");
 	}
 }
-
-app.listen(4000, function(){
-	console.log("SERVER IS RUNNING");
+var port = process.env.PORT || 4000;
+app.listen(port, function(){
+  console.log("Server Has Started!");
 })
